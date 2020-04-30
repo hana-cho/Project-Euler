@@ -1,0 +1,32 @@
+#Problem 3: 
+#The prime factors of 13195 are 5, 7, 13 and 29.
+#What is the largest prime factor of the number 600851475143 ?
+
+
+
+
+#n is the number we are observing. In this case, 600851475143.
+
+def largest_prime(n): 
+	#start with the smallest prime. i =2.
+	i = 2
+	#case 1:the biggest possible prime factor is <= sqrt n.
+	while i <= n**(1/2):
+		#n%i==0 because i is a divisor of n
+		#we divide n by i and therefore eliminate the prime number 
+		#which is not the biggest
+		while n % i == 0 and n / i > 1:
+			n = n / i
+		i += 1
+	#case 2: the biggest possible prime factor is n itself (e.g. 7)
+	if n > 1:
+		return n
+	#back to case 1
+	else:
+		#return i-1 instead of i
+		#because i += 1 is out of the while loop
+		return(i-1)
+
+print(largest_prime(600851475143))
+		
+	
